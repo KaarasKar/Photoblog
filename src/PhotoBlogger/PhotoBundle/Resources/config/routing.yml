@@ -1,0 +1,3 @@
+photo_blogger_photo_homepage:
+    path:     /
+    defaults: { _controller: PhotoBloggerPhotoBundle:Default:index }

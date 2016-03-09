@@ -1,0 +1,4 @@
+services:
+#    photo_blogger_photo.example:
+#        class: PhotoBlogger\PhotoBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
