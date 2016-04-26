@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Photoblog</title>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+    <link href = "{{ asset('bundles/css/animate.css')}}" rel="stylesheet" >
+
+    <!-- Custom Stylesheet -->
+    <link href = "{{ asset('bundles/photobloggerphoto/css/style_login.css')}}" rel="stylesheet" >
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="top">
+        <h1 id="title" class="hidden"><span id="logo">Welcome</span></h1>
+    </div>
+    <div class="login-box animated fadeInUp">
+        <div class="box-header">
+            <h2>Log In</h2>
+        </div>
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <label for="username">{{ 'Username'|trans }}</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+            <label for="password">{{ 'Password'|trans }}</label>
+            <input type="password" id="password" name="_password" required="required" />
+            <br>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'Remember me '|trans }}</label>
+            <br>
+            <input type="submit" id="_submit" name="_submit" value="{{ 'Sign in!'|trans }}" />
+        </form>
+        <br/>
+
+            Don't have an account! <a href="register" onClick="">SignUp Here!<p class="small"></p></a>
+
+
+</div>
+</div>
+</body>
+
+</html>
+
+

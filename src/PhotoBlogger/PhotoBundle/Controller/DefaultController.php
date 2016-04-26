@@ -4,8 +4,6 @@ namespace PhotoBlogger\PhotoBundle\Controller;
 
 use PhotoBlogger\PhotoBundle\Entity\Enquiry;
 use PhotoBlogger\PhotoBundle\Form\EnquiryType;
-use PhotoBlogger\PhotoBundle\Entity\Article;
-use PhotoBlogger\PhotoBundle\Form\ArticleType;
 use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,28 +17,18 @@ class DefaultController extends Controller
         return $this->render('PhotoBloggerPhotoBundle:Default:index.html.twig');
     }
 
-    public function showAction($id){
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $user = $em->getRepository('PhotoBloggerPhotoBundle:User')->find($id);
-
-        $comment = $em->getRepository('PhotoBloggerPhotoBundle:Comment')
-            ->getCom($user->getId());
-
-        return $this->render('PhotoBloggerPhotoBundle:Default:index.html.twig', array('comment' => $comment));
+    public function contactAction()
+    {
+        return $this->render('PhotoBloggerPhotoBundle:Default:index.html.twig');
     }
-
     public function emailSendAction(Request $request)
     {
         $em=$request->getContent();
         $json=json_decode($em);
-
         $enquiry = new Enquiry();
         $form = $this->createForm(new EnquiryType(), $enquiry);
-
         $result = new stdClass();
         $result->result=false;
-
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
             $message = \Swift_Message::newInstance()
@@ -50,7 +38,6 @@ class DefaultController extends Controller
                 ->setBody($this->renderView('PhotoBloggerPhotoBundle:Default:contactEmail.txt.twig', array('enquiry' => $enquiry)));
             $result->result=true;
         }
-
         //     $result->requestData=$json;
         $form->requestData=$json;
         $json->content;

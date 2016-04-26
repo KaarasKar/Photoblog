@@ -2,11 +2,6 @@ photo_blogger_photo_homepage:
     path:     /
     defaults: { _controller: PhotoBloggerPhotoBundle:Default:index }
 
-PhotoBloggerPhotoBundle_comment_create:
-    path:  /comment/{id_my_user}
-    defaults: { _controller: PhotoBloggerPhotoBundle:Comment:create }
-
-
 PhotoBloggerPhotoBundle_emailsend:
     pattern:  /cont
     defaults: { _controller: PhotoBloggerPhotoBundle:Default:emailSend }
